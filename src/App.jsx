@@ -10,7 +10,7 @@ function NavBar() {
   const [query, setQuery] = useState("")
 
   // Handles filtering posts by user text input
-  // Query = used in Home.jsx
+  // Query = used in Home.jsx, compared against post titles (only info displayed in feed)
   const handleSearchChange = (e) => {
     const value = e.target.value
     setQuery(value)
