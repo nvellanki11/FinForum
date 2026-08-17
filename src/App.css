@@ -341,3 +341,65 @@
     transform: rotate(360deg);
   }
 }
+
+.edit-btn,
+.delete-btn {
+  padding: 12px 32px;
+  font-size: 17px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.edit-btn {
+  background: #6b7280;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background: #575f6b;
+}
+
+.delete-btn {
+  background: #dc2626;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+.upvote-btn {
+  padding: 8px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--rh-green);
+  color: #fff;
+  transition: background 0.15s ease;
+}
+
+.upvote-btn:hover {
+  background: var(--rh-green-dark);
+}
+
+.create-form .cancel-btn {
+  width: auto;
+  padding: 12px 32px;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #dc2626;
+  color: #374151;
+  transition: background 0.15s ease;
+}
+
+.create-form .cancel-btn:hover {
+  background: #b91c1c;
+}

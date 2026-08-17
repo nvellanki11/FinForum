@@ -12,7 +12,7 @@ export default function Create() {
     const createPost = async (e) => {
         e.preventDefault();
 
-        if (!title) {
+        if (!title) {  // Requirement, other inputs are optional
             setMessage("Error: post needs a title");
             return;
         } else {
@@ -27,10 +27,10 @@ export default function Create() {
                     comments: []
                 });
 
-            if (error) {
+            if (error) {  // Error log to user in case of other reasons
                 console.error(error);
                 setMessage("Error: Failed to create post");
-            } else {
+            } else {  // User indicator
                 setMessage("Post created successfully!");
                 setTitle("");
                 setBody("");

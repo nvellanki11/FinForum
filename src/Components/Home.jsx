@@ -11,7 +11,7 @@ export default function Home() {
     const [searchParams] = useSearchParams();
     const query = searchParams.get("q") || "";
 
-    useEffect(() => {
+    useEffect(() => {  // Display feed for user whenever navigating to Home
         const fetchPosts = async () => {
             setLoading(true)
 
@@ -31,6 +31,7 @@ export default function Home() {
         fetchPosts()
     }, [])
 
+    // Displays posts based on recency
     const sortByTime = () => {
         setPosts((prev) =>
             [...prev].sort(
@@ -39,10 +40,13 @@ export default function Home() {
         )
     }
 
+    // Displays posts based on upvote count ("Hot")
     const sortByVotes = () => {
         setPosts((prev) => [...prev].sort((a, b) => b.upvotes - a.upvotes))
     }
 
+    // Filter posts when using search bar
+    // Case-insensitive keyword search, displays all posts if no query
     const visiblePosts = query
         ? posts.filter((post) => post.title.toLowerCase().includes(query.toLowerCase()))
         : posts;

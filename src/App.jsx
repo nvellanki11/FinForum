@@ -9,9 +9,14 @@ function NavBar() {
   const navigate = useNavigate()
   const [query, setQuery] = useState("")
 
-  const submitSearch = (e) => {
-    e.preventDefault()
-    navigate(`/?q=${encodeURIComponent(query)}`)
+  // Handles filtering posts by user text input
+  // Query = used in Home.jsx
+  const handleSearchChange = (e) => {
+    const value = e.target.value
+    setQuery(value)
+
+    // Encoded query param, rerenders without page reload
+    navigate(`/?q=${encodeURIComponent(value)}`)
   }
 
   return (
@@ -21,12 +26,12 @@ function NavBar() {
         <Link className='top-link' to={"/"}>Home</Link>
         <Link className='top-link' to={"/create"}>Create a Post</Link>
       </div>
-      <form className='nav-search' onSubmit={submitSearch}>
+      <form className='nav-search' onSubmit={(e) => e.preventDefault()}>
         <input
           type='text'
           placeholder='Search posts...'
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={handleSearchChange}
         />
       </form>
     </div>

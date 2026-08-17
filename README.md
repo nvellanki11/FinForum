@@ -79,7 +79,9 @@ GIF created with ...  Screen Record + Imgur
 
 ## Notes
 
-Handling the form at various stages, including Creating, Updating or Deleting a post, was hard to manage stylistically (I could get the functionality down right). Planning out the routing was also a little difficult initially, but that went away quickly.
+Challenges: Handling the form at various stages, including Creating, Updating or Deleting a post, was hard to manage stylistically (I could get the functionality down right). Planning out the routing was also a little difficult initially, but that went away quickly.
+
+Future Developments: I would like to eventually use Supabase's User Authentication, allowing users of my app to only edit/delete their own posts, and indicate which users commented and which ones upvoted. I would also like to add localStorage so that a user could remain signed in for an extended period of time, beyond one visit to the app.
 
 ## License
 

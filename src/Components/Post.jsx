@@ -3,9 +3,12 @@ import { useParams, useNavigate } from "react-router";
 import { supabase } from "../../supabase";
 import Spinner from "./Spinner";
 
+// Converts a timestamp into a relative "___ ago" string
 function timeAgo(timestamp) {
+    // Time between now and the timestamp, in seconds
     const seconds = Math.floor((new Date() - new Date(timestamp)) / 1000);
 
+    // Units and their length in seconds
     const units = [
         ["year", 31536000],
         ["month", 2592000],
@@ -14,6 +17,7 @@ function timeAgo(timestamp) {
         ["minute", 60],
     ];
 
+    // Find the largest unit that has happened at least once
     for (const [name, secondsInUnit] of units) {
         const count = Math.floor(seconds / secondsInUnit);
         if (count >= 1) {
@@ -21,6 +25,7 @@ function timeAgo(timestamp) {
         }
     }
 
+    // Too recent, less than a minute since post created/updated
     return "just now";
 }
 
@@ -55,6 +60,10 @@ export default function Post() {
 
         fetchPost()
     }, [id])
+
+    // Supabase endpoints below: addComment, upvote, and saveEdit 
+    // Each updates the Posts row for this id, while deletePost removes it
+    // Each refreshes local state (or navigates away) from the response.
 
     const addComment = async (e) => {
         e.preventDefault();
@@ -157,7 +166,7 @@ export default function Post() {
                             onChange={(e) => setEditImageUrl(e.target.value)}
                         />
                         <button type="submit">Save</button>
-                        <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
+                        <button type="button" className="cancel-btn" onClick={() => setIsEditing(false)}>Cancel</button>
                     </form>
                 ) : (
                     <>
@@ -194,7 +203,7 @@ export default function Post() {
                     </form>
                 </div>
 
-                <div className="post-actions" style={{display: "flex", gap: "0.5rem", marginTop: "1rem"}}>
+                <div className="post-actions" style={{display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1rem"}}>
                     <button className="edit-btn" onClick={startEditing}>Edit</button>
                     <button className="delete-btn" onClick={deletePost}>Delete</button>
                 </div>
